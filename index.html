@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crowngate | The Oral Prosthetic Centre</title>
+    <meta name="description"
+        content="ISO 9001:2015 Certified Dental Laboratory. Premium Zirconia, DMLS Crowns, and BPS Dentures.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* UPDATED HERO BACKGROUND */
+        /* I changed the opacity values (0.75 and 0.65) so the image is more visible */
+        .hero-bg {
+            background: linear-gradient(rgba(30, 58, 138, 0.75), rgba(30, 58, 138, 0.65)), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            /* This creates a cool parallax effect */
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center gap-2">
+                        <img src="logo.png" alt="Crowngate Logo" class="h-12 w-auto object-contain">
+                        <div>
+                            <span class="font-bold text-2xl text-blue-900 tracking-tight">CROWNGATE</span>
+                            <p class="text-xs text-gray-500 tracking-widest">THE ORAL PROSTHETIC CENTRE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-900 font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-900 font-medium">About</a>
+                    <a href="#products" class="text-gray-700 hover:text-blue-900 font-medium">Products</a>
+                    <a href="#why-us" class="text-gray-700 hover:text-blue-900 font-medium">Why Us</a>
+                    <a href="#contact"
+                        class="bg-blue-900 text-white px-5 py-2 rounded-full hover:bg-blue-800 transition">Contact
+                        Us</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                        class="text-gray-700 hover:text-blue-900 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#home" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">Home</a>
+            <a href="#about" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">About</a>
+            <a href="#products" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">Products</a>
+            <a href="#contact" class="block px-4 py-3 bg-blue-50 text-blue-900 font-bold">Contact Us</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4 pt-20">
+        <div class="max-w-4xl mx-auto text-white">
+            <div
+                class="inline-block bg-blue-800 bg-opacity-80 px-4 py-1 rounded-full text-sm font-semibold tracking-wider mb-4 border border-blue-400 backdrop-blur-sm">
+                ISO 9001: 2015 CERTIFIED
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
+                Don't Compromise.<br>
+                <span class="text-blue-200">Optimize with Crowngate.</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-100 mb-8 font-light drop-shadow-md">
+                Your trusted partner in high-quality dental restorations. Precision crafted for perfection.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#products"
+                    class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">Explore
+                    Products</a>
+                <a href="#contact"
+                    class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-900 transition shadow-lg backdrop-blur-sm">Get
+                    in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-blue-900 mb-6">Celebrating Excellence</h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Welcome to Crowngate Dental Lab. As a premier dental lab, we are proud to celebrate one year of
+                        excellence in the field. Over the past year, we have successfully completed numerous cases with
+                        care, precision, and attention to detail.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Our team of skilled artisans ensures that every restoration meets the highest standards of
+                        quality and aesthetics. We are committed to innovation and personalized solutions.
+                    </p>
+                    <div class="flex items-center gap-4 mt-6">
+                        <div class="border border-gray-200 p-4 rounded-lg text-center w-32">
+                            <i class="fas fa-certificate text-blue-600 text-2xl mb-2"></i>
+                            <div class="text-xs font-bold text-gray-500">ISO 9001:2015</div>
+                            <div class="text-sm font-bold text-blue-900">CERTIFIED</div>
+                        </div>
+                        <div class="border border-gray-200 p-4 rounded-lg text-center w-32">
+                            <i class="fas fa-check-circle text-green-600 text-2xl mb-2"></i>
+                            <div class="text-xs font-bold text-gray-500">QUALITY</div>
+                            <div class="text-sm font-bold text-blue-900">CONTROL</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80"
+                        alt="Dental Lab Work" class="rounded-lg shadow-2xl w-full object-cover h-96">
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-blue-900 text-white p-6 rounded-lg shadow-xl hidden md:block">
+                        <p class="text-2xl font-bold">100%</p>
+                        <p class="text-sm opacity-80">Quality Assured</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900">Why Choose Crowngate?</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">We take pride in delivering precision-crafted dental
+                    restorations with the highest quality standards.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
+                        <i class="fas fa-user-graduate text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Expert Craftsmanship</h3>
+                    <p class="text-sm text-gray-600">Our artisans are graduates of Saveetha Dental College, ensuring
+                        academic precision in every case.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
+                        <i class="fas fa-gem text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Uncompromising Quality</h3>
+                    <p class="text-sm text-gray-600">Using cutting-edge techniques and superior materials (Ivoclar,
+                        VITA) for natural aesthetics.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
+                        <i class="fas fa-leaf text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Eco-Friendly</h3>
+                    <p class="text-sm text-gray-600">We prioritize environmental responsibility with proper waste
+                        disposal and imaging techniques.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
+                        <i class="fas fa-shield-virus text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sterile & Clean</h3>
+                    <p class="text-sm text-gray-600">Compulsory sterilization protocols for all cases to ensure a
+                        contamination-free environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-blue-900 mb-12 text-center">Premium Restorations</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div
+                    class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="zircon.jpg" alt="Zirconia" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Premium Zirconia</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Multilayered blanks with intrinsic gradients. Seamless transition from cervical to incisal
+                            for hyper-realistic aesthetics.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> High
+                                Translucency</li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Superior
+                                Strength</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div
+                    class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="dmls.jpg" alt="DMLS PFM" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Metal Ceramic (DMLS)</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Cobalt chromium metal printed in DMLS machines combined with Ivoclar classic porcelain.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> DMLS Precision
+                            </li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Ivoclar/Vita
+                                Ceramics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div
+                    class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="bps.jpg" alt="BPS Dentures" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">Premium Dentures (BPS)</h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Biofunctional Prosthetic System. Meticulously designed for perfect fit, enhanced chewing
+                            efficiency, and lifelike look.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-2">
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> High Comfort
+                            </li>
+                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Natural
+                                Appearance</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional List -->
+            <div class="mt-12 bg-blue-50 rounded-xl p-8">
+                <h3 class="text-lg font-bold text-blue-900 mb-4">Also Offering:</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-arrow-right text-blue-500 mt-1 mr-3"></i>
+                        <div>
+                            <strong class="block text-gray-900">Cast Partial Denture (DMLS)</strong>
+                            <span class="text-sm text-gray-600">Custom-made Co-Cr & Titanium frameworks.</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-arrow-right text-blue-500 mt-1 mr-3"></i>
+                        <div>
+                            <strong class="block text-gray-900">Full Metal Crown</strong>
+                            <span class="text-sm text-gray-600">Top-quality DMLS Co-Cr metal for molars requiring heavy
+                                chewing force.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Footer -->
+    <section id="contact" class="bg-blue-900 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Optimize Your Dental Practice?</h2>
+            <p class="mb-8 text-blue-200">Join us as we continue to bring smiles to life with precision and perfection.
+            </p>
+
+            <div class="bg-blue-800 rounded-xl p-8 max-w-2xl mx-auto border border-blue-700">
+                <div class="grid md:grid-cols-2 gap-8 text-left">
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Crowngate Dental Lab</h4>
+                        <p class="text-sm text-blue-200 mb-2">The Oral Prosthetic Centre</p>
+                        <p class="text-sm text-blue-200">ISO 9001:2015 Certified</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg mb-4">Contact Us</h4>
+                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-phone mr-3 w-5"></i> +91 73066
+                            51561</p>
+                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-envelope mr-3 w-5"></i>
+                            crowngatedental@gmail.com</p>
+                        <p class="flex items-center text-blue-200"><i class="fas fa-map-marker-alt mr-3 w-5"></i>
+                            Varkala, Kerala, India</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-sm text-blue-400">
+                &copy; 2025 Crowngate Dental Lab. All Rights Reserved.
+            </div>
+        </div>
+    </section>
+
+    <!-- ADDED WHATSAPP FLOATING BUTTON -->
+    <!-- Replace the phone number in the href below with your actual WhatsApp number -->
+    <a href="https://wa.me/91730" target="_blank"
+        class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all z-50 flex items-center group">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span
+            class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap group-hover:pl-2 font-bold">Chat
+            on WhatsApp</span>
+    </a>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
