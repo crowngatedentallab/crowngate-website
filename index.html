@@ -12,31 +12,21 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
+    <!-- PapaParse Library to read Google Sheet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        h1,
-        h2,
-        h3,
-        .serif {
-            font-family: 'Playfair Display', serif;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
         /* UPDATED HERO BACKGROUND */
-        /* I changed the opacity values (0.75 and 0.65) so the image is more visible */
         .hero-bg {
-            background: linear-gradient(rgba(30, 58, 138, 0.75), rgba(30, 58, 138, 0.65)), url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80');
+            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.75)), url('https://images.unsplash.com/photo-1618498082410-b4aa22193b43?q=80&w=1974&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            /* This creates a cool parallax effect */
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
+        .service-card:hover { transform: translateY(-5px); }
     </style>
 </head>
 
@@ -47,8 +37,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center gap-2">
-                        <img src="logo.png" alt="Crowngate Logo" class="h-12 w-auto object-contain">
+                    <div class="flex-shrink-0 flex items-center gap-3">
+                        <!-- Logo loads from folder -->
+                        <img src="logo.png" alt="Crowngate Logo" class="h-12 w-auto object-contain" onerror="this.style.display='none';">
                         <div>
                             <span class="font-bold text-2xl text-blue-900 tracking-tight">CROWNGATE</span>
                             <p class="text-xs text-gray-500 tracking-widest">THE ORAL PROSTHETIC CENTRE</p>
@@ -57,27 +48,21 @@
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#home" class="text-gray-700 hover:text-blue-900 font-medium">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-900 font-medium">About</a>
                     <a href="#products" class="text-gray-700 hover:text-blue-900 font-medium">Products</a>
-                    <a href="#why-us" class="text-gray-700 hover:text-blue-900 font-medium">Why Us</a>
-                    <a href="#contact"
-                        class="bg-blue-900 text-white px-5 py-2 rounded-full hover:bg-blue-800 transition">Contact
-                        Us</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-900 font-medium">About</a>
+                    <a href="#contact" class="bg-blue-900 text-white px-5 py-2 rounded-full hover:bg-blue-800 transition">Contact Us</a>
                 </div>
-                <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
-                        class="text-gray-700 hover:text-blue-900 focus:outline-none">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-700 hover:text-blue-900 focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
             <a href="#home" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">Home</a>
-            <a href="#about" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">About</a>
             <a href="#products" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">Products</a>
+            <a href="#about" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">About</a>
             <a href="#contact" class="block px-4 py-3 bg-blue-50 text-blue-900 font-bold">Contact Us</a>
         </div>
     </nav>
@@ -85,8 +70,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4 pt-20">
         <div class="max-w-4xl mx-auto text-white">
-            <div
-                class="inline-block bg-blue-800 bg-opacity-80 px-4 py-1 rounded-full text-sm font-semibold tracking-wider mb-4 border border-blue-400 backdrop-blur-sm">
+            <div class="inline-block bg-blue-800 bg-opacity-80 px-4 py-1 rounded-full text-sm font-semibold tracking-wider mb-4 border border-blue-400 backdrop-blur-sm">
                 ISO 9001: 2015 CERTIFIED
             </div>
             <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
@@ -94,41 +78,57 @@
                 <span class="text-blue-200">Optimize with Crowngate.</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-100 mb-8 font-light drop-shadow-md">
-                Your trusted partner in high-quality dental restorations. Precision crafted for perfection.
+                Partnering with doctors to deliver precision, aesthetics, and reliability.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#products"
-                    class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">Explore
-                    Products</a>
-                <a href="#contact"
-                    class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-900 transition shadow-lg backdrop-blur-sm">Get
-                    in Touch</a>
+                <!-- Send Case Button (Opens Email) -->
+                <a href="mailto:contact@crowngatedental.in?subject=New Case / Scan&body=Hi Crowngate Team,%0D%0A%0D%0AI would like to send a new case details attached below:%0D%0A" 
+                   class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition shadow-lg flex items-center justify-center gap-2 border border-blue-500">
+                   <i class="fas fa-envelope-open-text"></i> Email Case / Scan
+                </a>
+                
+                <a href="#products" class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">
+                    View Catalog
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-blue-900">Premium Restorations</h2>
+                <p class="text-gray-600 mt-2">Engineered for Doctors. Crafted for Patients.</p>
+            </div>
+
+            <!-- DYNAMIC CONTAINER: This gets filled by Google Sheets -->
+            <div id="products-container" class="grid md:grid-cols-3 gap-8">
+                <div class="col-span-3 text-center py-12">
+                    <i class="fas fa-circle-notch fa-spin text-4xl text-blue-200"></i>
+                    <p class="text-gray-500 mt-4">Loading latest catalog...</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <section id="about" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 class="text-3xl font-bold text-blue-900 mb-6">Celebrating Excellence</h2>
                     <p class="text-gray-600 mb-4 leading-relaxed">
                         Welcome to Crowngate Dental Lab. As a premier dental lab, we are proud to celebrate one year of
-                        excellence in the field. Over the past year, we have successfully completed numerous cases with
-                        care, precision, and attention to detail.
-                    </p>
-                    <p class="text-gray-600 mb-6 leading-relaxed">
-                        Our team of skilled artisans ensures that every restoration meets the highest standards of
-                        quality and aesthetics. We are committed to innovation and personalized solutions.
+                        excellence. We specialize in supporting dental professionals with precise cases.
                     </p>
                     <div class="flex items-center gap-4 mt-6">
-                        <div class="border border-gray-200 p-4 rounded-lg text-center w-32">
+                        <div class="border border-gray-200 bg-white p-4 rounded-lg text-center w-32 shadow-sm">
                             <i class="fas fa-certificate text-blue-600 text-2xl mb-2"></i>
                             <div class="text-xs font-bold text-gray-500">ISO 9001:2015</div>
                             <div class="text-sm font-bold text-blue-900">CERTIFIED</div>
                         </div>
-                        <div class="border border-gray-200 p-4 rounded-lg text-center w-32">
+                        <div class="border border-gray-200 bg-white p-4 rounded-lg text-center w-32 shadow-sm">
                             <i class="fas fa-check-circle text-green-600 text-2xl mb-2"></i>
                             <div class="text-xs font-bold text-gray-500">QUALITY</div>
                             <div class="text-sm font-bold text-blue-900">CONTROL</div>
@@ -136,10 +136,8 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80"
-                        alt="Dental Lab Work" class="rounded-lg shadow-2xl w-full object-cover h-96">
-                    <div
-                        class="absolute -bottom-6 -left-6 bg-blue-900 text-white p-6 rounded-lg shadow-xl hidden md:block">
+                    <img src="100%secured.jpg" alt="Dental Lab Work" class="rounded-lg shadow-2xl w-full object-cover h-96" onerror="this.src='logo.png'">
+                    <div class="absolute -bottom-6 -left-6 bg-blue-900 text-white p-6 rounded-lg shadow-xl hidden md:block">
                         <p class="text-2xl font-bold">100%</p>
                         <p class="text-sm opacity-80">Quality Assured</p>
                     </div>
@@ -149,143 +147,41 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section id="why-us" class="py-20 bg-gray-50">
+    <section id="why-us" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-blue-900">Why Choose Crowngate?</h2>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">We take pride in delivering precision-crafted dental
-                    restorations with the highest quality standards.</p>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Precision-crafted dental restorations with the highest quality standards.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
                         <i class="fas fa-user-graduate text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Expert Craftsmanship</h3>
-                    <p class="text-sm text-gray-600">Our artisans are graduates of Saveetha Dental College, ensuring
-                        academic precision in every case.</p>
+                    <p class="text-sm text-gray-600">Graduates of Saveetha Dental College ensuring academic precision.</p>
                 </div>
-                <!-- Feature 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
                         <i class="fas fa-gem text-xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Uncompromising Quality</h3>
-                    <p class="text-sm text-gray-600">Using cutting-edge techniques and superior materials (Ivoclar,
-                        VITA) for natural aesthetics.</p>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Premium Materials</h3>
+                    <p class="text-sm text-gray-600">Using Ivoclar and VITA for natural aesthetics and durability.</p>
                 </div>
-                <!-- Feature 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
                         <i class="fas fa-leaf text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Eco-Friendly</h3>
-                    <p class="text-sm text-gray-600">We prioritize environmental responsibility with proper waste
-                        disposal and imaging techniques.</p>
+                    <p class="text-sm text-gray-600">Responsible waste disposal and imaging techniques.</p>
                 </div>
-                <!-- Feature 4 -->
-                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition">
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
                         <i class="fas fa-shield-virus text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-gray-900 mb-3">Sterile & Clean</h3>
-                    <p class="text-sm text-gray-600">Compulsory sterilization protocols for all cases to ensure a
-                        contamination-free environment.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-blue-900 mb-12 text-center">Premium Restorations</h2>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div
-                    class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
-                    <div class="h-48 bg-gray-200 relative overflow-hidden">
-                        <img src="zircon.jpg" alt="Zirconia" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Premium Zirconia</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Multilayered blanks with intrinsic gradients. Seamless transition from cervical to incisal
-                            for hyper-realistic aesthetics.
-                        </p>
-                        <ul class="text-sm text-gray-500 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> High
-                                Translucency</li>
-                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Superior
-                                Strength</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div
-                    class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
-                    <div class="h-48 bg-gray-200 relative overflow-hidden">
-                        <img src="dmls.jpg" alt="DMLS PFM" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Metal Ceramic (DMLS)</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Cobalt chromium metal printed in DMLS machines combined with Ivoclar classic porcelain.
-                        </p>
-                        <ul class="text-sm text-gray-500 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> DMLS Precision
-                            </li>
-                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Ivoclar/Vita
-                                Ceramics</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div
-                    class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
-                    <div class="h-48 bg-gray-200 relative overflow-hidden">
-                        <img src="bps.jpg" alt="BPS Dentures" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">Premium Dentures (BPS)</h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Biofunctional Prosthetic System. Meticulously designed for perfect fit, enhanced chewing
-                            efficiency, and lifelike look.
-                        </p>
-                        <ul class="text-sm text-gray-500 space-y-2">
-                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> High Comfort
-                            </li>
-                            <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-2"></i> Natural
-                                Appearance</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional List -->
-            <div class="mt-12 bg-blue-50 rounded-xl p-8">
-                <h3 class="text-lg font-bold text-blue-900 mb-4">Also Offering:</h3>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div class="flex items-start">
-                        <i class="fas fa-arrow-right text-blue-500 mt-1 mr-3"></i>
-                        <div>
-                            <strong class="block text-gray-900">Cast Partial Denture (DMLS)</strong>
-                            <span class="text-sm text-gray-600">Custom-made Co-Cr & Titanium frameworks.</span>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <i class="fas fa-arrow-right text-blue-500 mt-1 mr-3"></i>
-                        <div>
-                            <strong class="block text-gray-900">Full Metal Crown</strong>
-                            <span class="text-sm text-gray-600">Top-quality DMLS Co-Cr metal for molars requiring heavy
-                                chewing force.</span>
-                        </div>
-                    </div>
+                    <p class="text-sm text-gray-600">Compulsory sterilization protocols for all cases.</p>
                 </div>
             </div>
         </div>
@@ -294,9 +190,8 @@
     <!-- CTA / Footer -->
     <section id="contact" class="bg-blue-900 text-white py-16">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6">Ready to Optimize Your Dental Practice?</h2>
-            <p class="mb-8 text-blue-200">Join us as we continue to bring smiles to life with precision and perfection.
-            </p>
+            <h2 class="text-3xl font-bold mb-6">Partner With Us Today</h2>
+            <p class="mb-8 text-blue-200">Consistent quality. On-time delivery. Perfect fit.</p>
 
             <div class="bg-blue-800 rounded-xl p-8 max-w-2xl mx-auto border border-blue-700">
                 <div class="grid md:grid-cols-2 gap-8 text-left">
@@ -307,34 +202,119 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-lg mb-4">Contact Us</h4>
-                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-phone mr-3 w-5"></i> +91 73066
-                            51561</p>
-                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-envelope mr-3 w-5"></i>
-                            contact@crowngatedental.in</p>
-                        <p class="flex items-center text-blue-200"><i class="fas fa-map-marker-alt mr-3 w-5"></i>
-                            Varkala, Kerala, India</p>
+                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-phone mr-3 w-5"></i> +91 73066 51561</p>
+                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-envelope mr-3 w-5"></i> contact@crowngatedental.in</p>
+                        <p class="flex items-center text-blue-200"><i class="fas fa-map-marker-alt mr-3 w-5"></i> Varkala, Kerala, India</p>
                     </div>
                 </div>
             </div>
-
             <div class="mt-12 text-sm text-blue-400">
                 &copy; 2025 Crowngate Dental Lab. All Rights Reserved.
             </div>
         </div>
     </section>
 
-    <!-- ADDED WHATSAPP FLOATING BUTTON -->
-    <!-- Replace the phone number in the href below with your actual WhatsApp number -->
+    <!-- WhatsApp Float -->
     <a href="https://wa.me/917306651561" target="_blank"
         class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all z-50 flex items-center group">
         <i class="fab fa-whatsapp text-3xl"></i>
-        <span
-            class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap group-hover:pl-2 font-bold">Chat
-            on WhatsApp</span>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap group-hover:pl-2 font-bold">Chat on WhatsApp</span>
     </a>
 
     <script>
-        // Smooth scrolling for anchor links
+        // --- YOUR CSV LINK IS HERE ---
+        const googleSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSH7IhvkjiVeHh1wMyKnXN-xNMCLnS6_0UwBOxZA8Ly5jMvvLFseVt7DlO96U09ODJvCBRvFvZ325Sb/pub?output=csv"; 
+        // ------------------------------
+
+        // Helper to fix Google Drive Links
+        function processImageUrl(url) {
+            if (!url) return 'logo.png';
+            
+            // Check if it's a Google Drive link
+            if (url.includes('drive.google.com')) {
+                const parts = url.split('/');
+                let id = '';
+                
+                // Case 1: /file/d/ID/view
+                if (url.includes('/file/d/')) {
+                    const idIndex = parts.indexOf('d') + 1;
+                    if (idIndex < parts.length) id = parts[idIndex];
+                } 
+                // Case 2: id=ID
+                else if (url.includes('id=')) {
+                    id = url.split('id=')[1].split('&')[0];
+                }
+
+                if (id) {
+                    // Convert to Thumbnail API for valid image embedding
+                    return `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
+                }
+            }
+            return url;
+        }
+
+        const fallbackData = [
+            {title: "Premium Zirconia", description: "Multilayered blanks with intrinsic gradients.", image: "zircon.jpg", features: "High Translucency|Superior Strength|Natural Esthetics"},
+            {title: "Metal Ceramic (DMLS)", description: "Cobalt chromium metal printed in DMLS machines.", image: "dmls.jpg", features: "DMLS Precision|Ivoclar Ceramics|High Durability"},
+            {title: "Premium Dentures (BPS)", description: "Biofunctional Prosthetic System designed for fit.", image: "bps.jpg", features: "High Comfort|Natural Appearance|Perfect Suction"}
+        ];
+
+        function renderProducts(data) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = ''; 
+
+            data.forEach(product => {
+                let featuresHtml = '';
+                if(product.features) {
+                    const featuresList = product.features.split('|'); 
+                    featuresList.forEach(f => {
+                        featuresHtml += `<li class="flex items-start"><i class="fas fa-check text-blue-500 mr-2 mt-1"></i> <span>${f.trim()}</span></li>`;
+                    });
+                }
+
+                // Process the image link (handles both local file names and Google Drive links)
+                const finalImage = processImageUrl(product.image);
+
+                const html = `
+                <div class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
+                    <div class="h-56 bg-gray-100 relative overflow-hidden">
+                         <img src="${finalImage}" alt="${product.title}" class="w-full h-full object-cover" onerror="this.src='logo.png'">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">${product.title}</h3>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow">${product.description}</p>
+                        <div class="mt-auto">
+                            <div class="h-px bg-gray-100 w-full mb-4"></div>
+                            <ul class="text-sm text-gray-500 space-y-2">
+                                ${featuresHtml}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+
+        if(googleSheetUrl) {
+            Papa.parse(googleSheetUrl, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    if(results.data.length > 0) {
+                        renderProducts(results.data);
+                    } else {
+                        renderProducts(fallbackData);
+                    }
+                },
+                error: function() {
+                    renderProducts(fallbackData);
+                }
+            });
+        } else {
+            renderProducts(fallbackData);
+        }
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -345,5 +325,4 @@
         });
     </script>
 </body>
-
 </html>
