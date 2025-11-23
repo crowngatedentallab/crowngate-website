@@ -12,6 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
+    <!-- PapaParse Library for Google Sheets -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script>
         tailwind.config = {
@@ -62,22 +63,6 @@
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235FC3C7' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
 
-        .wave-divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-
-        .wave-divider svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 60px;
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -108,6 +93,10 @@
                     <a href="#home" class="text-brand-gray hover:text-brand-teal font-medium transition">Home</a>
                     <a href="#products" class="text-brand-gray hover:text-brand-teal font-medium transition">Products</a>
                     <a href="#about" class="text-brand-gray hover:text-brand-teal font-medium transition">About</a>
+                    <!-- Brochure Link -->
+                    <a href="https://drive.google.com/file/d/1VM2ewDwyR9XSA_7eTsUPiRDUFvKGvj16/view?usp=sharing" target="_blank" class="text-brand-gray hover:text-brand-teal font-medium transition flex items-center">
+                        <i class="fas fa-download mr-1 text-sm"></i> Brochure
+                    </a>
                     <a href="#contact" class="bg-gradient-to-r from-brand-teal to-brand-teal-dark text-white px-6 py-2.5 rounded-full hover:shadow-lg transition-all transform hover:scale-105">Contact Us</a>
                 </div>
                 <div class="md:hidden flex items-center">
@@ -121,6 +110,7 @@
             <a href="#home" class="block px-4 py-3 text-brand-gray hover:bg-teal-50 hover:text-brand-teal transition">Home</a>
             <a href="#products" class="block px-4 py-3 text-brand-gray hover:bg-teal-50 hover:text-brand-teal transition">Products</a>
             <a href="#about" class="block px-4 py-3 text-brand-gray hover:bg-teal-50 hover:text-brand-teal transition">About</a>
+            <a href="https://drive.google.com/file/d/1VM2ewDwyR9XSA_7eTsUPiRDUFvKGvj16/view?usp=sharing" target="_blank" class="block px-4 py-3 text-brand-gray hover:bg-teal-50 hover:text-brand-teal transition">Download Brochure</a>
             <a href="#contact" class="block px-4 py-3 bg-teal-50 text-brand-teal font-bold">Contact Us</a>
         </div>
     </nav>
@@ -136,9 +126,10 @@
                 <span class="text-brand-turquoise-light">Optimize with Crowngate.</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-100 mb-10 font-light drop-shadow-lg max-w-2xl mx-auto">
-                Partnering with doctors to deliver precision, aesthetics, and reliability in every restoration.
+                Partnering with dentists to deliver precision, aesthetics, and reliability in every restoration.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <!-- Email Case Button -->
                 <a href="mailto:contact@crowngatedental.in?subject=New Case / Scan&body=Hi Crowngate Team,%0D%0A%0D%0AI would like to send a new case details attached below:%0D%0A" 
                    class="bg-brand-turquoise hover:bg-brand-turquoise-light text-white px-8 py-4 rounded-full font-bold transition-all shadow-xl flex items-center justify-center gap-2 border-2 border-white transform hover:scale-105">
                    <i class="fas fa-envelope-open-text"></i> Email Case / Scan
@@ -149,14 +140,9 @@
                 </a>
             </div>
         </div>
-        <div class="wave-divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
-            </svg>
-        </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Products Section (Dynamic) -->
     <section id="products" class="py-24 pattern-bg relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -281,6 +267,12 @@
                         <h4 class="font-bold text-xl mb-4 text-brand-turquoise-light">Crowngate Dental Lab</h4>
                         <p class="text-sm text-gray-200 mb-2">The Oral Prosthetic Centre</p>
                         <p class="text-sm text-gray-200">ISO 9001:2015 Certified</p>
+                        <!-- Brochure Button in Footer -->
+                        <div class="mt-4">
+                            <a href="https://drive.google.com/file/d/1VM2ewDwyR9XSA_7eTsUPiRDUFvKGvj16/view?usp=sharing" target="_blank" class="inline-flex items-center text-brand-turquoise-light hover:text-white transition">
+                                <i class="fas fa-file-pdf mr-2"></i> Download Brochure
+                            </a>
+                        </div>
                     </div>
                     <div>
                         <h4 class="font-bold text-xl mb-4 text-brand-turquoise-light">Contact Us</h4>
@@ -304,6 +296,7 @@
     </a>
 
     <script>
+        // --- YOUR CSV LINK IS HERE ---
         const googleSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSH7IhvkjiVeHh1wMyKnXN-xNMCLnS6_0UwBOxZA8Ly5jMvvLFseVt7DlO96U09ODJvCBRvFvZ325Sb/pub?output=csv"; 
 
         function processImageUrl(url) {
@@ -349,9 +342,10 @@
 
                 const finalImage = processImageUrl(product.image);
 
+                // Updated Card Design to match the darker Teal Theme
                 const html = `
-                <div class="service-card bg-white border-2 border-brand-turquoise border-opacity-0 hover:border-opacity-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
-                    <div class="h-56 bg-gradient-to-br from-teal-50 to-cyan-50 relative overflow-hidden">
+                <div class="service-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 border-t-4 border-brand-turquoise h-full flex flex-col">
+                    <div class="h-56 bg-gradient-to-br from-teal-50 to-cyan-50 relative overflow-hidden rounded-t-lg">
                          <img src="${finalImage}" alt="${product.title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" onerror="this.src='logo.png'">
                          <div class="absolute top-4 right-4 bg-brand-turquoise text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
                             <i class="fas fa-star mr-1"></i> Premium
@@ -361,7 +355,7 @@
                         <h3 class="text-xl font-bold text-brand-teal mb-2">${product.title}</h3>
                         <p class="text-brand-gray text-sm mb-4 flex-grow leading-relaxed">${product.description}</p>
                         <div class="mt-auto">
-                            <div class="h-px bg-gradient-to-r from-transparent via-brand-turquoise to-transparent w-full mb-4"></div>
+                            <div class="h-px bg-gradient-to-r from-transparent via-brand-turquoise to-transparent w-full mb-4 opacity-50"></div>
                             <ul class="text-sm text-brand-gray space-y-2">
                                 ${featuresHtml}
                             </ul>
