@@ -12,134 +12,207 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
-    <!-- PapaParse Library to read Google Sheet -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-teal': '#2C7A7B',
+                        'brand-teal-dark': '#285E61',
+                        'brand-turquoise': '#5FC3C7',
+                        'brand-turquoise-light': '#81E6D9',
+                        'brand-charcoal': '#2D3748',
+                        'brand-gray': '#4A5568',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
-        /* UPDATED HERO BACKGROUND */
         .hero-bg {
-            background: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.75)), url('https://images.unsplash.com/photo-1618498082410-b4aa22193b43?q=80&w=1974&auto=format&fit=crop');
+            background: linear-gradient(135deg, rgba(44, 122, 123, 0.95) 0%, rgba(40, 94, 97, 0.92) 50%, rgba(45, 55, 72, 0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1618498082410-b4aa22193b43?q=80&w=1974&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
 
-        .service-card:hover { transform: translateY(-5px); }
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44, 122, 123, 0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #5FC3C7 0%, #2C7A7B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pattern-bg {
+            background-color: #f7fafc;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235FC3C7' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full z-50">
+    <nav class="bg-white shadow-lg fixed w-full z-50 border-b-2 border-brand-turquoise">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center gap-3">
-                        <!-- Logo loads from folder -->
                         <img src="logo.png" alt="Crowngate Logo" class="h-12 w-auto object-contain" onerror="this.style.display='none';">
                         <div>
-                            <span class="font-bold text-2xl text-blue-900 tracking-tight">CROWNGATE</span>
-                            <p class="text-xs text-gray-500 tracking-widest">THE ORAL PROSTHETIC CENTRE</p>
+                            <span class="font-bold text-2xl text-brand-teal tracking-tight">CROWNGATE</span>
+                            <p class="text-xs text-brand-turquoise tracking-widest font-semibold">THE ORAL PROSTHETIC CENTRE</p>
                         </div>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-blue-900 font-medium">Home</a>
-                    <a href="#products" class="text-gray-700 hover:text-blue-900 font-medium">Products</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-900 font-medium">About</a>
-                    <a href="#contact" class="bg-blue-900 text-white px-5 py-2 rounded-full hover:bg-blue-800 transition">Contact Us</a>
+                    <a href="#home" class="text-brand-gray hover:text-brand-teal font-medium transition">Home</a>
+                    <a href="#products" class="text-brand-gray hover:text-brand-teal font-medium transition">Products</a>
+                    <a href="#about" class="text-brand-gray hover:text-brand-teal font-medium transition">About</a>
+                    <a href="#contact" class="bg-gradient-to-r from-brand-teal to-brand-teal-dark text-white px-6 py-2.5 rounded-full hover:shadow-lg transition-all transform hover:scale-105">Contact Us</a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-gray-700 hover:text-blue-900 focus:outline-none">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-brand-teal hover:text-brand-teal-dark focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <a href="#home" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">Home</a>
-            <a href="#products" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">Products</a>
-            <a href="#about" class="block px-4 py-3 text-gray-700 hover:bg-gray-50">About</a>
-            <a href="#contact" class="block px-4 py-3 bg-blue-50 text-blue-900 font-bold">Contact Us</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <a href="#home" class="block px-4 py-3 text-brand-gray hover:bg-teal-50 hover:text-brand-teal transition">Home</a>
+            <a href="#products" class="block px-4 py-3 text-brand-gray hover:bg-teal-50 hover:text-brand-teal transition">Products</a>
+            <a href="#about" class="block px-4 py-3 text-brand-gray hover:bg-teal-50 hover:text-brand-teal transition">About</a>
+            <a href="#contact" class="block px-4 py-3 bg-teal-50 text-brand-teal font-bold">Contact Us</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4 pt-20">
-        <div class="max-w-4xl mx-auto text-white">
-            <div class="inline-block bg-blue-800 bg-opacity-80 px-4 py-1 rounded-full text-sm font-semibold tracking-wider mb-4 border border-blue-400 backdrop-blur-sm">
-                ISO 9001: 2015 CERTIFIED
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4 pt-20 relative">
+        <div class="max-w-4xl mx-auto text-white z-10">
+            <div class="inline-block bg-brand-turquoise bg-opacity-30 px-5 py-2 rounded-full text-sm font-bold tracking-wider mb-6 border-2 border-brand-turquoise-light backdrop-blur-md float-animation">
+                <i class="fas fa-certificate mr-2"></i>ISO 9001: 2015 CERTIFIED
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight drop-shadow-lg">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl">
                 Don't Compromise.<br>
-                <span class="text-blue-200">Optimize with Crowngate.</span>
+                <span class="text-brand-turquoise-light">Optimize with Crowngate.</span>
             </h1>
-            <p class="text-xl md:text-2xl text-gray-100 mb-8 font-light drop-shadow-md">
-                Partnering with doctors to deliver precision, aesthetics, and reliability.
+            <p class="text-xl md:text-2xl text-gray-100 mb-10 font-light drop-shadow-lg max-w-2xl mx-auto">
+                Partnering with doctors to deliver precision, aesthetics, and reliability in every restoration.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <!-- Send Case Button (Opens Email) -->
                 <a href="mailto:contact@crowngatedental.in?subject=New Case / Scan&body=Hi Crowngate Team,%0D%0A%0D%0AI would like to send a new case details attached below:%0D%0A" 
-                   class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition shadow-lg flex items-center justify-center gap-2 border border-blue-500">
+                   class="bg-brand-turquoise hover:bg-brand-turquoise-light text-white px-8 py-4 rounded-full font-bold transition-all shadow-xl flex items-center justify-center gap-2 border-2 border-white transform hover:scale-105">
                    <i class="fas fa-envelope-open-text"></i> Email Case / Scan
                 </a>
                 
-                <a href="#products" class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition shadow-lg">
-                    View Catalog
+                <a href="#products" class="bg-white text-brand-teal px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-all shadow-xl transform hover:scale-105">
+                    View Catalog <i class="fas fa-arrow-down ml-2"></i>
                 </a>
             </div>
+        </div>
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
+            </svg>
         </div>
     </section>
 
     <!-- Products Section -->
-    <section id="products" class="py-20 bg-white">
+    <section id="products" class="py-24 pattern-bg relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-blue-900">Premium Restorations</h2>
-                <p class="text-gray-600 mt-2">Engineered for Doctors. Crafted for Patients.</p>
+            <div class="text-center mb-16">
+                <div class="inline-block mb-4">
+                    <span class="bg-brand-turquoise-light bg-opacity-20 text-brand-teal px-4 py-2 rounded-full text-sm font-bold tracking-wider">
+                        OUR PRODUCTS
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Premium Restorations</h2>
+                <p class="text-brand-gray text-lg max-w-2xl mx-auto">Engineered for Doctors. Crafted for Patients.</p>
             </div>
 
-            <!-- DYNAMIC CONTAINER: This gets filled by Google Sheets -->
             <div id="products-container" class="grid md:grid-cols-3 gap-8">
                 <div class="col-span-3 text-center py-12">
-                    <i class="fas fa-circle-notch fa-spin text-4xl text-blue-200"></i>
-                    <p class="text-gray-500 mt-4">Loading latest catalog...</p>
+                    <i class="fas fa-circle-notch fa-spin text-5xl text-brand-turquoise"></i>
+                    <p class="text-brand-gray mt-4 font-medium">Loading latest catalog...</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+    <section id="about" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-teal-50 to-transparent opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-3xl font-bold text-blue-900 mb-6">Celebrating Excellence</h2>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
+                    <div class="inline-block mb-4">
+                        <span class="bg-brand-turquoise-light bg-opacity-20 text-brand-teal px-4 py-2 rounded-full text-sm font-bold tracking-wider">
+                            ABOUT US
+                        </span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-brand-teal mb-6">Celebrating Excellence</h2>
+                    <p class="text-brand-gray text-lg mb-6 leading-relaxed">
                         Welcome to Crowngate Dental Lab. As a premier dental lab, we are proud to celebrate one year of
                         excellence. We specialize in supporting dental professionals with precise cases.
                     </p>
-                    <div class="flex items-center gap-4 mt-6">
-                        <div class="border border-gray-200 bg-white p-4 rounded-lg text-center w-32 shadow-sm">
-                            <i class="fas fa-certificate text-blue-600 text-2xl mb-2"></i>
-                            <div class="text-xs font-bold text-gray-500">ISO 9001:2015</div>
-                            <div class="text-sm font-bold text-blue-900">CERTIFIED</div>
+                    <div class="flex items-center gap-6 mt-8">
+                        <div class="border-2 border-brand-turquoise bg-gradient-to-br from-teal-50 to-white p-6 rounded-xl text-center w-40 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+                            <i class="fas fa-certificate text-brand-teal text-3xl mb-3"></i>
+                            <div class="text-xs font-bold text-brand-gray">ISO 9001:2015</div>
+                            <div class="text-sm font-bold text-brand-teal mt-1">CERTIFIED</div>
                         </div>
-                        <div class="border border-gray-200 bg-white p-4 rounded-lg text-center w-32 shadow-sm">
-                            <i class="fas fa-check-circle text-green-600 text-2xl mb-2"></i>
-                            <div class="text-xs font-bold text-gray-500">QUALITY</div>
-                            <div class="text-sm font-bold text-blue-900">CONTROL</div>
+                        <div class="border-2 border-brand-turquoise bg-gradient-to-br from-teal-50 to-white p-6 rounded-xl text-center w-40 shadow-lg hover:shadow-xl transition transform hover:scale-105">
+                            <i class="fas fa-check-circle text-brand-turquoise text-3xl mb-3"></i>
+                            <div class="text-xs font-bold text-brand-gray">100% QUALITY</div>
+                            <div class="text-sm font-bold text-brand-teal mt-1">ASSURED</div>
                         </div>
                     </div>
                 </div>
                 <div class="relative">
-                    <img src="100%secured.jpg" alt="Dental Lab Work" class="rounded-lg shadow-2xl w-full object-cover h-96" onerror="this.src='logo.png'">
-                    <div class="absolute -bottom-6 -left-6 bg-blue-900 text-white p-6 rounded-lg shadow-xl hidden md:block">
-                        <p class="text-2xl font-bold">100%</p>
-                        <p class="text-sm opacity-80">Quality Assured</p>
+                    <div class="absolute -top-6 -left-6 w-full h-full bg-gradient-to-br from-brand-turquoise to-brand-teal rounded-2xl opacity-20"></div>
+                    <img src="100%secured.jpg" alt="Dental Lab Work" class="rounded-2xl shadow-2xl w-full object-cover h-96 relative z-10 border-4 border-white" onerror="this.src='logo.png'">
+                    <div class="absolute -bottom-8 -right-8 bg-gradient-to-r from-brand-teal to-brand-teal-dark text-white p-8 rounded-2xl shadow-2xl z-20 hidden md:block">
+                        <p class="text-3xl font-bold">100%</p>
+                        <p class="text-sm opacity-90 mt-1">Quality Assured</p>
                     </div>
                 </div>
             </div>
@@ -147,68 +220,77 @@
     </section>
 
     <!-- Why Choose Us -->
-    <section id="why-us" class="py-20 bg-white">
+    <section id="why-us" class="py-24 pattern-bg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-blue-900">Why Choose Crowngate?</h2>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Precision-crafted dental restorations with the highest quality standards.</p>
+                <div class="inline-block mb-4">
+                    <span class="bg-brand-turquoise-light bg-opacity-20 text-brand-teal px-4 py-2 rounded-full text-sm font-bold tracking-wider">
+                        WHY CHOOSE US
+                    </span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Why Choose Crowngate?</h2>
+                <p class="mt-4 text-brand-gray text-lg max-w-2xl mx-auto">Precision-crafted dental restorations with the highest quality standards.</p>
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
-                        <i class="fas fa-user-graduate text-xl"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 border-t-4 border-brand-turquoise">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-turquoise to-brand-teal rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg">
+                        <i class="fas fa-user-graduate text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Expert Craftsmanship</h3>
-                    <p class="text-sm text-gray-600">Graduates of Saveetha Dental College ensuring academic precision.</p>
+                    <h3 class="text-xl font-bold text-brand-charcoal mb-3">Expert Craftsmanship</h3>
+                    <p class="text-sm text-brand-gray leading-relaxed">Graduates of Saveetha Dental College ensuring academic precision.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
-                        <i class="fas fa-gem text-xl"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 border-t-4 border-brand-turquoise">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-turquoise to-brand-teal rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg">
+                        <i class="fas fa-gem text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Premium Materials</h3>
-                    <p class="text-sm text-gray-600">Using Ivoclar and VITA for natural aesthetics and durability.</p>
+                    <h3 class="text-xl font-bold text-brand-charcoal mb-3">Premium Materials</h3>
+                    <p class="text-sm text-brand-gray leading-relaxed">Using Ivoclar and VITA for natural aesthetics and durability.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
-                        <i class="fas fa-leaf text-xl"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 border-t-4 border-brand-turquoise">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-turquoise to-brand-teal rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg">
+                        <i class="fas fa-leaf text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Eco-Friendly</h3>
-                    <p class="text-sm text-gray-600">Responsible waste disposal and imaging techniques.</p>
+                    <h3 class="text-xl font-bold text-brand-charcoal mb-3">Eco-Friendly</h3>
+                    <p class="text-sm text-brand-gray leading-relaxed">Responsible waste disposal and imaging techniques.</p>
                 </div>
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-blue-900">
-                        <i class="fas fa-shield-virus text-xl"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 border-t-4 border-brand-turquoise">
+                    <div class="w-16 h-16 bg-gradient-to-br from-brand-turquoise to-brand-teal rounded-2xl flex items-center justify-center mb-6 text-white shadow-lg">
+                        <i class="fas fa-shield-virus text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Sterile & Clean</h3>
-                    <p class="text-sm text-gray-600">Compulsory sterilization protocols for all cases.</p>
+                    <h3 class="text-xl font-bold text-brand-charcoal mb-3">Sterile & Clean</h3>
+                    <p class="text-sm text-brand-gray leading-relaxed">Compulsory sterilization protocols for all cases.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA / Footer -->
-    <section id="contact" class="bg-blue-900 text-white py-16">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-6">Partner With Us Today</h2>
-            <p class="mb-8 text-blue-200">Consistent quality. On-time delivery. Perfect fit.</p>
+    <section id="contact" class="bg-gradient-to-br from-brand-teal via-brand-teal-dark to-brand-charcoal text-white py-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-brand-turquoise rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-48 h-48 bg-brand-turquoise-light rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">Partner With Us Today</h2>
+            <p class="mb-12 text-brand-turquoise-light text-lg">Consistent quality. On-time delivery. Perfect fit.</p>
 
-            <div class="bg-blue-800 rounded-xl p-8 max-w-2xl mx-auto border border-blue-700">
-                <div class="grid md:grid-cols-2 gap-8 text-left">
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-10 max-w-2xl mx-auto border border-brand-turquoise border-opacity-30 shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-10 text-left">
                     <div>
-                        <h4 class="font-bold text-lg mb-4">Crowngate Dental Lab</h4>
-                        <p class="text-sm text-blue-200 mb-2">The Oral Prosthetic Centre</p>
-                        <p class="text-sm text-blue-200">ISO 9001:2015 Certified</p>
+                        <h4 class="font-bold text-xl mb-4 text-brand-turquoise-light">Crowngate Dental Lab</h4>
+                        <p class="text-sm text-gray-200 mb-2">The Oral Prosthetic Centre</p>
+                        <p class="text-sm text-gray-200">ISO 9001:2015 Certified</p>
                     </div>
                     <div>
-                        <h4 class="font-bold text-lg mb-4">Contact Us</h4>
-                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-phone mr-3 w-5"></i> +91 73066 51561</p>
-                        <p class="flex items-center mb-2 text-blue-200"><i class="fas fa-envelope mr-3 w-5"></i> contact@crowngatedental.in</p>
-                        <p class="flex items-center text-blue-200"><i class="fas fa-map-marker-alt mr-3 w-5"></i> Varkala, Kerala, India</p>
+                        <h4 class="font-bold text-xl mb-4 text-brand-turquoise-light">Contact Us</h4>
+                        <p class="flex items-center mb-3 text-gray-200 hover:text-white transition"><i class="fas fa-phone mr-3 w-5 text-brand-turquoise"></i> +91 73066 51561</p>
+                        <p class="flex items-center mb-3 text-gray-200 hover:text-white transition"><i class="fas fa-envelope mr-3 w-5 text-brand-turquoise"></i> contact@crowngatedental.in</p>
+                        <p class="flex items-center text-gray-200 hover:text-white transition"><i class="fas fa-map-marker-alt mr-3 w-5 text-brand-turquoise"></i> Varkala, Kerala, India</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-12 text-sm text-blue-400">
+            <div class="mt-12 text-sm text-gray-300">
                 &copy; 2025 Crowngate Dental Lab. All Rights Reserved.
             </div>
         </div>
@@ -216,37 +298,30 @@
 
     <!-- WhatsApp Float -->
     <a href="https://wa.me/917306651561" target="_blank"
-        class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-2xl transition-all z-50 flex items-center group">
+        class="fixed bottom-6 right-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white p-4 rounded-full shadow-2xl transition-all z-50 flex items-center group transform hover:scale-110">
         <i class="fab fa-whatsapp text-3xl"></i>
-        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap group-hover:pl-2 font-bold">Chat on WhatsApp</span>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap group-hover:pl-3 font-bold">Chat on WhatsApp</span>
     </a>
 
     <script>
-        // --- YOUR CSV LINK IS HERE ---
         const googleSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSH7IhvkjiVeHh1wMyKnXN-xNMCLnS6_0UwBOxZA8Ly5jMvvLFseVt7DlO96U09ODJvCBRvFvZ325Sb/pub?output=csv"; 
-        // ------------------------------
 
-        // Helper to fix Google Drive Links
         function processImageUrl(url) {
             if (!url) return 'logo.png';
             
-            // Check if it's a Google Drive link
             if (url.includes('drive.google.com')) {
                 const parts = url.split('/');
                 let id = '';
                 
-                // Case 1: /file/d/ID/view
                 if (url.includes('/file/d/')) {
                     const idIndex = parts.indexOf('d') + 1;
                     if (idIndex < parts.length) id = parts[idIndex];
                 } 
-                // Case 2: id=ID
                 else if (url.includes('id=')) {
                     id = url.split('id=')[1].split('&')[0];
                 }
 
                 if (id) {
-                    // Convert to Thumbnail API for valid image embedding
                     return `https://drive.google.com/thumbnail?id=${id}&sz=w1000`;
                 }
             }
@@ -268,24 +343,26 @@
                 if(product.features) {
                     const featuresList = product.features.split('|'); 
                     featuresList.forEach(f => {
-                        featuresHtml += `<li class="flex items-start"><i class="fas fa-check text-blue-500 mr-2 mt-1"></i> <span>${f.trim()}</span></li>`;
+                        featuresHtml += `<li class="flex items-start"><i class="fas fa-check text-brand-turquoise mr-2 mt-1"></i> <span>${f.trim()}</span></li>`;
                     });
                 }
 
-                // Process the image link (handles both local file names and Google Drive links)
                 const finalImage = processImageUrl(product.image);
 
                 const html = `
-                <div class="service-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
-                    <div class="h-56 bg-gray-100 relative overflow-hidden">
-                         <img src="${finalImage}" alt="${product.title}" class="w-full h-full object-cover" onerror="this.src='logo.png'">
+                <div class="service-card bg-white border-2 border-brand-turquoise border-opacity-0 hover:border-opacity-100 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 h-full flex flex-col">
+                    <div class="h-56 bg-gradient-to-br from-teal-50 to-cyan-50 relative overflow-hidden">
+                         <img src="${finalImage}" alt="${product.title}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110" onerror="this.src='logo.png'">
+                         <div class="absolute top-4 right-4 bg-brand-turquoise text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                            <i class="fas fa-star mr-1"></i> Premium
+                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-xl font-bold text-blue-900 mb-2">${product.title}</h3>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow">${product.description}</p>
+                        <h3 class="text-xl font-bold text-brand-teal mb-2">${product.title}</h3>
+                        <p class="text-brand-gray text-sm mb-4 flex-grow leading-relaxed">${product.description}</p>
                         <div class="mt-auto">
-                            <div class="h-px bg-gray-100 w-full mb-4"></div>
-                            <ul class="text-sm text-gray-500 space-y-2">
+                            <div class="h-px bg-gradient-to-r from-transparent via-brand-turquoise to-transparent w-full mb-4"></div>
+                            <ul class="text-sm text-brand-gray space-y-2">
                                 ${featuresHtml}
                             </ul>
                         </div>
