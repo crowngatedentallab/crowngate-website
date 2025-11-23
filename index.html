@@ -35,8 +35,9 @@
         h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
 
         .hero-bg {
-            background: linear-gradient(135deg, rgba(44, 122, 123, 0.95) 0%, rgba(40, 94, 97, 0.92) 50%, rgba(45, 55, 72, 0.95) 100%), 
-                        url('https://drive.google.com/file/d/1uhILyJXI8aZ33mLH92L4BtM7DU-ZPEgQ/view?usp=drive_link');
+            /* We use the thumbnail API to force the Drive file to load as an image */
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.85)), 
+                        url('https://drive.google.com/file/d/1uhILyJXI8aZ33mLH92L4BtM7DU-ZPEgQ/view?usp=sharing');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
