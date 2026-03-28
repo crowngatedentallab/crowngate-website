@@ -153,33 +153,44 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4 pt-20 relative">
-        <div class="max-w-4xl mx-auto text-white z-10">
-            <div
-                class="inline-block bg-brand-turquoise bg-opacity-30 px-5 py-2 rounded-full text-sm font-bold tracking-wider mb-6 border-2 border-brand-turquoise-light backdrop-blur-md float-animation">
-                <i class="fas fa-certificate mr-2"></i>ISO 9001: 2015 CERTIFIED
-            </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl">
-                Don't Compromise.<br>
-                <span class="text-brand-turquoise-light">Optimize with Crowngate.</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-100 mb-10 font-light drop-shadow-lg max-w-2xl mx-auto">
-                Partnering with dentists to deliver precision, aesthetics, and reliability in every restoration.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <!-- Email Case Button -->
-                <a href="mailto:contact@crowngatedental.in?subject=New Case / Scan&body=Hi Crowngate Team,%0D%0A%0D%0AI would like to send a new case details attached below:%0D%0A"
-                    class="bg-brand-turquoise hover:bg-brand-turquoise-light text-white px-8 py-4 rounded-full font-bold transition-all shadow-xl flex items-center justify-center gap-2 border-2 border-white transform hover:scale-105">
-                    <i class="fas fa-envelope-open-text"></i> Email Case / Scan
-                </a>
+    <section id="home" class="h-screen flex items-center justify-center text-center px-4 pt-20 relative overflow-hidden">
 
-                <a href="#products"
-                    class="bg-white text-brand-teal px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-all shadow-xl transform hover:scale-105">
-                    View Catalog <i class="fas fa-arrow-down ml-2"></i>
-                </a>
-            </div>
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline preload="auto"
+        class="absolute top-0 left-0 w-full h-full object-cover">
+        <source src="hero-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay -->
+    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/70 to-black/50"></div>
+
+    <!-- Hero Content -->
+    <div class="max-w-4xl mx-auto text-white z-10 relative">
+        <div
+            class="inline-block bg-brand-turquoise bg-opacity-30 px-5 py-2 rounded-full text-sm font-bold tracking-wider mb-6 border-2 border-brand-turquoise-light backdrop-blur-md float-animation">
+            <i class="fas fa-certificate mr-2"></i>ISO 9001: 2015 CERTIFIED
         </div>
-    </section>
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-2xl">
+            Don't Compromise.<br>
+            <span class="text-brand-turquoise-light">Optimize with Crowngate.</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-100 mb-10 font-light drop-shadow-lg max-w-2xl mx-auto">
+            Partnering with dentists to deliver precision, aesthetics, and reliability in every restoration.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="mailto:contact@crowngatedental.in?subject=New Case / Scan&body=Hi Crowngate Team,%0D%0A%0D%0AI would like to send a new case details attached below:%0D%0A"
+                class="bg-brand-turquoise hover:bg-brand-turquoise-light text-white px-8 py-4 rounded-full font-bold transition-all shadow-xl flex items-center justify-center gap-2 border-2 border-white transform hover:scale-105">
+                <i class="fas fa-envelope-open-text"></i> Email Case / Scan
+            </a>
+
+            <a href="#products"
+                class="bg-white text-brand-teal px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-all shadow-xl transform hover:scale-105">
+                View Catalog <i class="fas fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
 
     <!-- Products Section (Dynamic) -->
     <section id="products" class="py-24 pattern-bg relative">
